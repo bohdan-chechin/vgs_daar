@@ -1,0 +1,21 @@
+<button {{action "export"}}>Download as CSV</button>
+<table>
+  <thead>
+    <tr>
+      <th>Tag</th>
+      <th>Value</th>
+      <th>Records</th>
+      <th>Impact</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each tags as |tag|}}
+    <tr>
+      <td>{{tag.tagName}}</td>
+      <td>{{tag.tagValue}}</td>
+      <td>{{tag.records}}</td>
+      <td>{{tag.impact}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
