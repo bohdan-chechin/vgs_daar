@@ -2,6 +2,7 @@
   "name": "vgs",
   "dependencies": {
     "d3": "~3.5.3",
-    "lodash": "~3.10.0"
+    "lodash": "~3.10.0",
+    "chart.js": "^2.7.1"
   }
 }

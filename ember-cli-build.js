@@ -7,6 +7,8 @@ module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     // Add options here
   });
+  app.import('node_modules/numeral/numeral.js')
+  //app.import('bower_componets/chart.js/dist/Chart.bundle.js')
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //

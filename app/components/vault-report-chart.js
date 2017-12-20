@@ -5,17 +5,18 @@ export default Component.extend({
   tagName: 'div',
   series: computed('data', function () {
     const operations = this.get('data')
-    const lebels = new Set()
+    const labels = new Set()
     operations.map((o) => {
       Object.keys(o.get('series')).map((key) => labels.add(key))
     })
-    
-    return {
+    const series = {
       labels,
       datasets: operations.map((o) => ({
         label: o.operation,
         data: Object.values(o.series)
       }))
-    }
+    };
+    console.log(series)
+    return series;
   })
 });
