@@ -1,12 +1,12 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('adapter:mockable', 'Unit | Adapter | mockable', {
+moduleFor('controller:vaults/view/analytics', 'Unit | Controller | vaults/view/analytics', {
   // Specify the other units that are required for this test.
-  // needs: ['serializer:foo']
+  // needs: ['controller:foo']
 });
 
 // Replace this with your real tests.
 test('it exists', function(assert) {
-  let adapter = this.subject();
-  assert.ok(adapter);
+  let controller = this.subject();
+  assert.ok(controller);
 });

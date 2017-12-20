@@ -1,3 +1,12 @@
 <div class="chart-wrapper">
-  {{ember-chart type='line' data=series}}
+  <div class="chart-wrapper-filter">
+    <label>Filter Activity: </label>
+    <select onChange={{action "filter" value="target.value"}}>
+      <option value="today">Today</option>
+      <option value="1 week">1 week</option>
+      <option value="1 month">1 month</option>
+      <option value="1 year">1 year</option>
+    </select>
+  </div>
+  {{ember-chart type='line' data=series options=options}}
 </div>

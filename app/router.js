@@ -11,7 +11,7 @@ Router.map(function() {
     this.route('view', {path: '/:vault_id'}, function() {
       this.route('analytics');
     });
-    this.route('analytics', {path: 'analytics'});
+    this.route('analytics');
   });
 });
 

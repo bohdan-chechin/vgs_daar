@@ -3,6 +3,15 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   tagName: 'div',
+  height: 200,
+  width: 500,
+  options: {
+    scales: {
+      yAxes: [{
+          stacked: true
+      }]
+    }
+  },
   series: computed('data', function () {
     const operations = this.get('data')
     const labels = new Set()
@@ -10,13 +19,20 @@ export default Component.extend({
       Object.keys(o.get('series')).map((key) => labels.add(key))
     })
     const series = {
-      labels,
+      labels: Array.from(labels),
       datasets: operations.map((o) => ({
-        label: o.operation,
-        data: Object.values(o.series)
+        label: o.get('operation'),
+        data: Object.keys(o.get('series')).map((key) => ({
+          y: o.get('series')[key],
+          x: key
+        }))
       }))
     };
-    console.log(series)
     return series;
-  })
+  }),
+  actions: {
+    filter (range) {
+      this.sendAction('filterOperations', range);
+    }
+  }
 });

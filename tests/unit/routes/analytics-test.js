@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:analytics', 'Unit | Route | analytics', {
+moduleFor('route:vaults.analytics', 'Unit | Route | analytics', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

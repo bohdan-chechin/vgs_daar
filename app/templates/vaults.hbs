@@ -1,10 +1,10 @@
-
-<ul>
+<ul class="nav nav-tabs">
+  <li>{{#link-to "vaults.analytics"}}Summary analytics{{/link-to}}</li>
   {{#each model as |vault|}}
     <li>
       {{#link-to "vaults.view" vault.id}}{{vault.name}} ({{vault.environment}}){{/link-to}}
     </li>
   {{/each}}
 </ul>
-{{#link-to "vaults.analytics"}}Summary analytics{{/link-to}}
+
 {{outlet}}

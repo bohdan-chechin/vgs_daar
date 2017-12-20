@@ -52,21 +52,30 @@ const operations = [
     operation: 'redact',
     data: {
       'april': 1235,
-      'may': 12098
+      'may': 12098,
+      'june': 1232,
+      'july': 10,
+      'august': 50000
     }
   },
   {
     operation: 'reveal',
     data: {
       'april': 945,
-      'may': 15335
+      'may': 15335,
+      'june': 534,
+      'july': 743,
+      'august': 735
     }
   },
   {
     operation: 'store',
     data: {
       'april': 22788,
-      'may': 2335
+      'may': 2335,
+      'june': 13452,
+      'july': 2345,
+      'august': 234
     }
   }
 ]
@@ -92,6 +101,12 @@ export default function() {
   });
 
   this.get('/operations', (schema, request) => {
+    const query = request.queryParams
+    if (query.vault_id) {
+      return {
+        data: operations
+      }
+    }
     return {
       data: operations
     }

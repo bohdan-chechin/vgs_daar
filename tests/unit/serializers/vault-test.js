@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('vault', 'Unit | Serializer | vault', {
   // Specify the other units that are required for this test.
-  needs: ['serializer:vault']
+  needs: ['serializer:vault', 'model:tag']
 });
 
 // Replace this with your real tests.

@@ -1,12 +1,12 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('transform:vault-data', 'Unit | Transform | vault data', {
+moduleFor('controller:vaults/analytics', 'Unit | Controller | vaults/analytics', {
   // Specify the other units that are required for this test.
-  // needs: ['serializer:foo']
+  // needs: ['controller:foo']
 });
 
 // Replace this with your real tests.
 test('it exists', function(assert) {
-  let transform = this.subject();
-  assert.ok(transform);
+  let controller = this.subject();
+  assert.ok(controller);
 });
