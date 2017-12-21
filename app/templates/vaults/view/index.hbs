@@ -1,9 +1,11 @@
-<p>ID: {{model.id}}</p>
-<p>Name: {{model.name}}</p>
-<p>Environment: {{model.environment}}</p>
-<p>Organization: {{model.organizationName}}</p>
-<p>Zone upstream: {{model.zoneUpstream}}</p>
-{{#if model.sslCertificate}}
-<p>SSL certificate: {{model.sslCertificate}}</p>
-{{/if}}
-<p>Details: tokens ({{model.details.tokens}}), traffic ({{model.details.traffic}}), requests ({{model.details.requests}})</p>
+<div class="vault-details">
+  <p>ID: {{model.id}}</p>
+  <p>Name: {{model.name}}</p>
+  <p>Environment: {{model.environment}}</p>
+  <p>Organization: {{model.organizationName}}</p>
+  <p>Zone upstream: {{model.zoneUpstream}}</p>
+  {{#if model.sslCertificate}}
+  <p>SSL certificate: {{model.sslCertificate}}</p>
+  {{/if}}
+  <p>Details: tokens ({{model.details.tokens}}), traffic ({{model.details.traffic}}), requests ({{model.details.requests}})</p>
+</div>

@@ -3,8 +3,6 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   tagName: 'div',
-  height: 200,
-  width: 500,
   options: {
     scales: {
       yAxes: [{
