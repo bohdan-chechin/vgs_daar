@@ -80,6 +80,48 @@ const operations = [
   }
 ]
 
+const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Sep', 'Oct', 'Nov', 'Dec']
+
+function generateOperationsForRange(range) {
+  if (range === 'today') {
+    return operations.map((o) => {
+      o.data = {}
+      for (let i = 0; i < 10; i++) {
+        o.data[`${i}:00`] = Math.round(Math.random() * 10000)
+      }
+      return o
+    })
+  }
+  if (range === '1 week') {
+    return operations.map((o) => {
+      o.data = {}
+      for (let i = 0; i < 7; i++) {
+        o.data[DAYS[i]] = Math.round(Math.random() * 10000)
+      }
+      return o
+    })
+  }
+  if (range === '1 month') {
+    return operations.map((o) => {
+      o.data = {}
+      for (let i = 1; i <= 30; i++) {
+        o.data[`${i}.12`] = Math.round(Math.random() * 10000)
+      }
+      return o
+    })
+  }
+  if (range === '1 year') {
+    return operations.map((o) => {
+      o.data = {}
+      for (let i = 0; i < 12; i++) {
+        o.data[MONTHS[i]] = Math.round(Math.random() * 10000)
+      }
+      return o
+    })
+  }
+}
+
 export default function() {
   this.namespace = '/api';
 
@@ -102,6 +144,11 @@ export default function() {
 
   this.get('/operations', (schema, request) => {
     const query = request.queryParams
+    if (query.range) {
+      return {
+        data: generateOperationsForRange(query.range)
+      }
+    }
     if (query.vault_id) {
       return {
         data: operations
