@@ -1,7 +1,6 @@
-# vgs
-
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+To complete this application is used Ember.js, Charts.js via ember--cli-chart component and for export functionality i implemented 'Download as CSV'. I chose Chart.js because it covers all requested functionality and very easy to install, also it's a well tested solution that is proven by time and has good test coverage.
+The reason to chose CSV as export format is same, it's easy to implement and also this is the most general and flexible format that can be easy converted to PDF or XLS.
+All problems that i faced was caused by lack of knowledge about modern Ember. The last version that i worked with was 1.13 or even elder so i had to refresh it in my memory. I solved this problem by reading oficial documentation, looking for some answers in search engines and asking the rest questions in slack.
 
 ## Prerequisites
 
