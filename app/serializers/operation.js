@@ -5,6 +5,8 @@ export default DS.JSONAPISerializer.extend({
     series: 'data'
   },
   normalizeResponse(store, primaryModelClass, payload, id, requestType) {
+    console.log('normalize response')
+    console.log(payload)
     payload.data = payload.data.map(this.formatOneOperation)
     return this._super(store, primaryModelClass, payload, id, requestType);
   },
