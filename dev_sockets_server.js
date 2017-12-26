@@ -8,12 +8,12 @@ server.on("connection", function(id) {
 
 server.on('message', (data, id) => {
   const mes = server.unmaskMessage(data);
-  console.log(mes)
+  
   const str = server.convertToString(mes.message);
   console.log(str, id)
 })
 
-function randomNumber() {x
+function randomNumber() {
   return Math.round(Math.random() * 1000)
 }
 
@@ -26,9 +26,9 @@ setInterval(function () {
     const message = JSON.stringify(operations.map((op)=> {
       let o = {
         operation: op,
-        data: {}
+        key: time,
+        value: randomNumber()
       }
-      o.data[time] = randomNumber()
       return o
     }))
     

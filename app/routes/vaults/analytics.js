@@ -23,7 +23,7 @@ export default Route.extend({
   },
   listenToSocket () {
     const socket = this.get('websockets').socketFor('ws://localhost:7000/');
-    socket.on('open', this.setFilter, this)
+    socket.on('open', this.setFilter, this);
     socket.on('message', this.updateModel, this);
     this.set('socketRef', socket);
   },
@@ -34,23 +34,20 @@ export default Route.extend({
   unlistenSocket () {
     const socket = this.get('socketRef');
     if (socket) {
+      socket.off('open', this.setFilter, this);
       socket.off('message', this.updateModel, this);
+      socket.disconnect();
     }
   },
   updateModel(event) {
-    const currentOperations = this.store.peekAll('operation')
     const updates = JSON.parse(event.data);
-    currentOperations.map((op) => {
-      let series = op.get('series');
-      let diff = updates.filter((r) => r.operation === op.get('operation')).pop();
+    if (!updates.map) return
+    updates.map((rec) => {
       this.store.push({
         data: {
-          id: op.get('id'),
+          id: rec.operation + rec.key,
           type: 'operation',
-          attributes: {
-            operation: op.get('operation'),
-            series: Object.assign(op.get('series'), diff.data)
-          }
+          attributes: rec          
         }
       });
     });
