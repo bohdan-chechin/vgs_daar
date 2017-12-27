@@ -14,7 +14,7 @@ server.on('message', (data, id) => {
 })
 
 function randomNumber() {
-  return Math.round(Math.random() * 1000)
+  return Math.round(Math.random() * 10000)
 }
 
 setInterval(function () { 
@@ -34,4 +34,4 @@ setInterval(function () {
     
     server.sendMessage("all", message, id);
   })
-}, 5000)
+}, 1000)

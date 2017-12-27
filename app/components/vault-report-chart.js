@@ -10,7 +10,7 @@ export default Component.extend({
       }]
     }
   },
-  series: computed('data', function () {
+  series: computed('data.length', function () {
     const operations = this.get('data');
     let labels = new Set();
     let operationsTypes = new Set();
@@ -20,11 +20,12 @@ export default Component.extend({
     })
     operationsTypes = Array.from(operationsTypes)
     const series = {
-      labels: Array.from(labels),
+      labels: Array.from(labels).slice(-20),
       datasets: operationsTypes.map((l) => ({
         label: l,
         data: operations
         .filter((op) => op.get('operation') === l)
+        .slice(-20)
         .map((op) => ({
           y: op.get('value'),
           x: op.get('key')

@@ -28,20 +28,22 @@ export default Route.extend({
     this.set('socketRef', socket);
   },
   setFilter () {
-    const socket = this.get('websockets').socketFor('ws://localhost:7000/');
+    const socket = this.get('socketRef');
     socket.send('setFilter', {vaultId: 'all'})
+  },
+  deactivate () {
+    this.unlistenSocket();
   },
   unlistenSocket () {
     const socket = this.get('socketRef');
     if (socket) {
       socket.off('open', this.setFilter, this);
       socket.off('message', this.updateModel, this);
-      socket.disconnect();
     }
   },
   updateModel(event) {
     const updates = JSON.parse(event.data);
-    if (!updates.map) return
+    if (!updates.map || !this.get('controller')) return;
     updates.map((rec) => {
       this.store.push({
         data: {
@@ -49,7 +51,7 @@ export default Route.extend({
           type: 'operation',
           attributes: rec          
         }
-      });
+      })
     });
   }
 });
